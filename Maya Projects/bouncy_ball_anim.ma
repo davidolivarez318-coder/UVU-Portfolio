@@ -1,6 +1,6 @@
 //Maya ASCII 2027 scene
 //Name: bouncy_ball_anim.ma
-//Last modified: Mon, Aug 31, 2026 07:39:58 PM
+//Last modified: Tue, Sep 01, 2026 01:11:37 PM
 //Codeset: 1252
 requires maya "2027";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiSkyDomeLight"
@@ -12,7 +12,7 @@ fileInfo "product" "Maya 2027";
 fileInfo "version" "2027";
 fileInfo "cutIdentifier" "202607171511-52c21617ee";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 26200)";
-fileInfo "UUID" "5C6B0B3E-48EC-C820-EF07-7D8481B2974B";
+fileInfo "UUID" "C17CAADD-4FFB-F7C8-05C8-4989F419CB23";
 createNode transform -s -n "persp";
 	rename -uid "91818C4B-4C68-F979-71AD-60A335039902";
 	setAttr ".v" no;
@@ -133,20 +133,20 @@ createNode UsdDefaultSettings -n "UsdDefaultRenderSettings3";
 	setAttr ".asp" -type "string" "UsdDefaultRenderSettings,/Render/SceneRenderSettings";
 lockNode -l 1 ;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "E2187D83-4C12-D626-FBFE-DBA5A0F198BA";
+	rename -uid "C9357424-4CBD-CDAB-CE1F-979FF1B6C1F1";
 	setAttr -s 2 ".lnk";
 	setAttr -s 2 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "CC7A323D-4FC6-754A-1F74-C682EB2ABE35";
+	rename -uid "7B69E774-49B7-3490-32D1-52A2F70B1908";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "AA97BC4B-4508-937F-5AF3-BB9988C3CE9F";
+	rename -uid "6E4431E4-41FF-3474-FEB5-30A493820DB0";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "582D46B2-4CE3-A7C1-EBB3-A48D06F43288";
+	rename -uid "B0E1AFBC-4871-5B2F-103D-BE825ACF2CE4";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "5E50D569-44C5-39FF-076E-8B8B7BDC5F82";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "4683D1A7-4F49-77AC-DC8C-3B8BD4C9C769";
+	rename -uid "2718D792-412F-454F-96C1-C599CBBAE29F";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "691E67F9-4952-CCB2-85A7-7BB2BF869CD9";
 	setAttr ".g" yes;
@@ -370,8 +370,6 @@ select -ne :defaultColorMgtGlobals;
 select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
-select -ne :ikSystem;
-	setAttr -s 4 ".sol";
 connectAttr "pSphere1_translateY.o" "pSphere1.ty";
 connectAttr "pSphere1_translateX.o" "pSphere1.tx";
 connectAttr "pSphere1_translateZ.o" "pSphere1.tz";
