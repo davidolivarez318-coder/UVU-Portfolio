@@ -13,7 +13,6 @@ public class FirstPersonCamera : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
 
         yRotation = playerBody.localEulerAngles.y;
      
