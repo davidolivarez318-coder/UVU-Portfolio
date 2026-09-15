@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 87
+  controlID: 88
   draggingID: 0
 --- !u!114 &3
 MonoBehaviour:
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 112}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 37
+  controlID: 38
   draggingID: 0
 --- !u!114 &10
 MonoBehaviour:
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 38
+  controlID: 39
   draggingID: 0
 --- !u!114 &11
 MonoBehaviour:
@@ -659,13 +659,13 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs:
-    - m_rawData: 568105584918811966
+    - m_rawData: 568105584918811968
     m_LastClickedID:
-      m_rawData: 568105584918811966
+      m_rawData: 568105584918811968
     m_ExpandedIDs:
-    - m_rawData: 568105589213755794
+    - m_rawData: 568105589213755788
     - m_rawData: 0
-    - m_rawData: 568105584918811966
+    - m_rawData: 568105584918811968
     - m_rawData: 568105587066273791
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -700,7 +700,7 @@ MonoBehaviour:
       m_rawData: 0
     m_ExpandedIDs:
     - m_rawData: 0
-    - m_rawData: 568105584918811966
+    - m_rawData: 568105584918811968
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -728,9 +728,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: []
+    m_SelectedInstanceIDs:
+    - m_rawData: 568105589213740126
     m_LastClickedEntityId:
-      m_rawData: 0
+      m_rawData: 568105589213740126
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: []
     m_RenameOverlay:
@@ -860,13 +861,13 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: []
+      m_SelectedIDs:
+      - m_rawData: 568105589213740126
       m_LastClickedID:
-        m_rawData: 0
+        m_rawData: 568105589213740126
       m_ExpandedIDs:
-      - m_rawData: 568105589213753438
-      - m_rawData: 568105589213755214
       - m_rawData: 568105589213756010
+      - m_rawData: 568105584918811910
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1490,9 +1491,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -23.883785, y: -0.8551016, z: 99.222244}
+    m_Target: {x: -10.024918, y: 26.002026, z: 211.37585}
     speed: 2
-    m_Value: {x: -23.883785, y: -0.8551016, z: 99.222244}
+    m_Value: {x: -10.024918, y: 26.002026, z: 211.37585}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1539,13 +1540,13 @@ MonoBehaviour:
     m_gridOpacity: 0.5
     m_NearestPlaneToHandleMode: 0
   m_Rotation:
-    m_Target: {x: 0.0034107903, y: 0.9613848, z: -0.27521157, w: 0.011815293}
+    m_Target: {x: 0.03429944, y: 0.17155944, z: -0.0059175896, w: 0.9846535}
     speed: 2
-    m_Value: {x: 0.0034105289, y: 0.9613111, z: -0.27519047, w: 0.0118143875}
+    m_Value: {x: 0.034296244, y: 0.17154345, z: -0.005917038, w: 0.9845617}
   m_Size:
-    m_Target: 8.538028
+    m_Target: 93.17415
     speed: 2
-    m_Value: 8.1703615
+    m_Value: 93.17415
   m_Ortho:
     m_Target: 0
     speed: 2
