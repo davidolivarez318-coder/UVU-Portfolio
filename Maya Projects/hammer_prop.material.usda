@@ -1,0 +1,349 @@
+#usda 1.0
+(
+    "Exported from Adobe Substance 3D Painter 12.1.5"
+    defaultPrim = "hammer_prop_obj"
+)
+
+def "hammer_prop_obj"
+{
+    def Scope "material"
+    {
+        def Material "initialShadingGroup" (
+            customData = {
+                dictionary adobe = {
+                    dictionary painter = {
+                        asset painterProject_spp = @hammer_prop.spp@
+                    }
+                }
+            }
+        )
+        {
+            asset inputs:baseColorTexture = @hammer_prop_textures/hammer_prop_initialShadingGroup_BaseMap.png@ (
+                colorSpace = "sRGB"
+            )
+            asset inputs:compositedAmbientOcclusionTexture = @hammer_prop_textures/hammer_prop_initialShadingGroup_MaskMap.png@ (
+                colorSpace = "raw"
+            )
+            asset inputs:compositedNormalGLTexture = @hammer_prop_textures/hammer_prop_initialShadingGroup_Normal.png@ (
+                colorSpace = "raw"
+            )
+            asset inputs:metallicTexture = @hammer_prop_textures/hammer_prop_initialShadingGroup_MaskMap.png@ (
+                colorSpace = "raw"
+            )
+            asset inputs:opacityTexture = @hammer_prop_textures/hammer_prop_initialShadingGroup_BaseMap.png@
+            float2 inputs:uvscale = (1, 1)
+            float2 inputs:uvtranslation = (0, 0)
+            token outputs:adobe:surface.connect = </hammer_prop_obj/material/initialShadingGroup/AdobeStandardMaterial_4_0.outputs:surface>
+            token outputs:mtlx:surface.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1.outputs:surface>
+            token outputs:usdpreviewsurface:surface.connect = </hammer_prop_obj/material/initialShadingGroup/UsdPreviewSurface.outputs:surface>
+
+            def NodeGraph "UsdPreviewSurface"
+            {
+                asset inputs:baseColorTexture.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:baseColorTexture>
+                asset inputs:compositedAmbientOcclusionTexture.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:compositedAmbientOcclusionTexture>
+                asset inputs:compositedNormalGLTexture.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:compositedNormalGLTexture>
+                asset inputs:metallicTexture.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:metallicTexture>
+                asset inputs:opacityTexture.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:opacityTexture>
+                float2 inputs:uvscale.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:uvscale>
+                float2 inputs:uvtranslation.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:uvtranslation>
+                token outputs:surface.connect = </hammer_prop_obj/material/initialShadingGroup/UsdPreviewSurface/UsdPreviewSurfaceShader.outputs:surface>
+
+                def Shader "UsdPreviewSurfaceShader"
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor.connect = </hammer_prop_obj/material/initialShadingGroup/UsdPreviewSurface/diffuseColorTextureShader.outputs:rgb>
+                    float inputs:ior = 1.4
+                    float inputs:metallic.connect = </hammer_prop_obj/material/initialShadingGroup/UsdPreviewSurface/metallicTextureShader.outputs:r>
+                    normal3f inputs:normal.connect = </hammer_prop_obj/material/initialShadingGroup/UsdPreviewSurface/normalTextureShader.outputs:rgb>
+                    float inputs:occlusion.connect = </hammer_prop_obj/material/initialShadingGroup/UsdPreviewSurface/occlusionTextureShader.outputs:g>
+                    float inputs:opacity.connect = </hammer_prop_obj/material/initialShadingGroup/UsdPreviewSurface/opacityTextureShader.outputs:a>
+                    token outputs:surface
+                }
+
+                def Shader "diffuseColorTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @hammer_prop_textures/hammer_prop_initialShadingGroup_BaseMap.png@
+                    asset inputs:file.connect = </hammer_prop_obj/material/initialShadingGroup/UsdPreviewSurface.inputs:baseColorTexture>
+                    token inputs:sourceColorSpace = "sRGB"
+                    float2 inputs:st.connect = </hammer_prop_obj/material/initialShadingGroup/UsdPreviewSurface/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    float3 outputs:rgb
+                }
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "UsdPrimvarReader_float2"
+                    string inputs:varname = "st"
+                    float2 outputs:result
+                }
+
+                def Shader "metallicTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @hammer_prop_textures/hammer_prop_initialShadingGroup_MaskMap.png@
+                    asset inputs:file.connect = </hammer_prop_obj/material/initialShadingGroup/UsdPreviewSurface.inputs:metallicTexture>
+                    token inputs:sourceColorSpace = "raw"
+                    float2 inputs:st.connect = </hammer_prop_obj/material/initialShadingGroup/UsdPreviewSurface/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    float outputs:r
+                }
+
+                def Shader "opacityTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @hammer_prop_textures/hammer_prop_initialShadingGroup_BaseMap.png@
+                    asset inputs:file.connect = </hammer_prop_obj/material/initialShadingGroup/UsdPreviewSurface.inputs:opacityTexture>
+                    token inputs:sourceColorSpace = "raw"
+                    float2 inputs:st.connect = </hammer_prop_obj/material/initialShadingGroup/UsdPreviewSurface/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    float outputs:a
+                }
+
+                def Shader "occlusionTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @hammer_prop_textures/hammer_prop_initialShadingGroup_MaskMap.png@
+                    asset inputs:file.connect = </hammer_prop_obj/material/initialShadingGroup/UsdPreviewSurface.inputs:compositedAmbientOcclusionTexture>
+                    token inputs:sourceColorSpace = "raw"
+                    float2 inputs:st.connect = </hammer_prop_obj/material/initialShadingGroup/UsdPreviewSurface/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    float outputs:g
+                }
+
+                def Shader "normalTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    float4 inputs:bias = (-1, -1, -1, 0)
+                    asset inputs:file = @hammer_prop_textures/hammer_prop_initialShadingGroup_Normal.png@
+                    asset inputs:file.connect = </hammer_prop_obj/material/initialShadingGroup/UsdPreviewSurface.inputs:compositedNormalGLTexture>
+                    float4 inputs:scale = (2, 2, 2, 1)
+                    token inputs:sourceColorSpace = "raw"
+                    float2 inputs:st.connect = </hammer_prop_obj/material/initialShadingGroup/UsdPreviewSurface/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    normal3f outputs:rgb
+                }
+            }
+
+            def NodeGraph "OpenPBR_1_1"
+            {
+                asset inputs:baseColorTexture.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:baseColorTexture>
+                asset inputs:compositedAmbientOcclusionTexture.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:compositedAmbientOcclusionTexture>
+                asset inputs:compositedNormalGLTexture.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:compositedNormalGLTexture>
+                asset inputs:metallicTexture.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:metallicTexture>
+                float2 inputs:uvscale.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:uvscale>
+                float2 inputs:uvtranslation.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:uvtranslation>
+                token outputs:surface.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1/OpenPBR_1_1Shader.outputs:out>
+
+                def Shader "OpenPBR_1_1Shader"
+                {
+                    uniform token info:id = "ND_open_pbr_surface_surfaceshader"
+                    color3f inputs:base_color.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1/baseColorTextureShader.outputs:rgb>
+                    float inputs:base_metalness.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1/metalnessTextureShader.outputs:r>
+                    float inputs:emission_luminance = 0
+                    float3 inputs:geometry_normal.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1/normal_NormalMap.outputs:out>
+                    bool inputs:geometry_thin_walled = 0
+                    float inputs:specular_ior = 1.5
+                    float inputs:transmission_depth = 0
+                    float inputs:transmission_dispersion_abbe_number = 20
+                    float inputs:transmission_dispersion_scale = 0
+                    color3f inputs:transmission_scatter = (0, 0, 0)
+                    float inputs:transmission_scatter_anisotropy = 0
+                    token outputs:out
+                }
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "ND_geompropvalue_vector2"
+                    string inputs:geomprop = "st"
+                    float2 outputs:out
+                }
+
+                def Shader "TexCoordTransform"
+                {
+                    uniform token info:id = "ND_place2d_vector2"
+                    float2 inputs:offset.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1.inputs:uvtranslation>
+                    float2 inputs:scale.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1.inputs:uvscale>
+                    float2 inputs:texcoord.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1/TexCoordReader.outputs:out>
+                    float2 outputs:out
+                }
+
+                def Shader "baseColorTextureShader"
+                {
+                    uniform token info:id = "ND_UsdUVTexture_23"
+                    asset inputs:file = @hammer_prop_textures/hammer_prop_initialShadingGroup_BaseMap.png@
+                    asset inputs:file.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1.inputs:baseColorTexture>
+                    float2 inputs:st.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1/TexCoordTransform.outputs:out>
+                    string inputs:wrapS = "periodic"
+                    string inputs:wrapT = "periodic"
+                    color3f outputs:rgb
+                }
+
+                def Shader "metalnessTextureShader"
+                {
+                    uniform token info:id = "ND_UsdUVTexture_23"
+                    asset inputs:file = @hammer_prop_textures/hammer_prop_initialShadingGroup_MaskMap.png@
+                    asset inputs:file.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1.inputs:metallicTexture>
+                    float2 inputs:st.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1/TexCoordTransform.outputs:out>
+                    string inputs:wrapS = "periodic"
+                    string inputs:wrapT = "periodic"
+                    float outputs:r
+                }
+
+                def Shader "normalTextureShader"
+                {
+                    uniform token info:id = "ND_UsdUVTexture_23"
+                    asset inputs:file = @hammer_prop_textures/hammer_prop_initialShadingGroup_Normal.png@
+                    asset inputs:file.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1.inputs:compositedNormalGLTexture>
+                    float2 inputs:st.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1/TexCoordTransform.outputs:out>
+                    string inputs:wrapS = "periodic"
+                    string inputs:wrapT = "periodic"
+                    color3f outputs:rgb
+                }
+
+                def Shader "normal_convert_color3_vector3"
+                {
+                    uniform token info:id = "ND_convert_color3_vector3"
+                    color3f inputs:in.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1/normalTextureShader.outputs:rgb>
+                    float3 outputs:out
+                }
+
+                def Shader "TangentReader"
+                {
+                    uniform token info:id = "ND_geompropvalue_vector3"
+                    string inputs:geomprop = "tangent"
+                    float3 outputs:out
+                }
+
+                def Shader "normal_NormalMap"
+                {
+                    uniform token info:id = "ND_normalmap"
+                    float3 inputs:in.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1/normal_convert_color3_vector3.outputs:out>
+                    float3 inputs:tangent.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1/TangentReader.outputs:out>
+                    float3 outputs:out
+                }
+
+                def Shader "ambientOcclusionTextureShader"
+                {
+                    uniform token info:id = "ND_UsdUVTexture_23"
+                    asset inputs:file = @hammer_prop_textures/hammer_prop_initialShadingGroup_MaskMap.png@
+                    asset inputs:file.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1.inputs:compositedAmbientOcclusionTexture>
+                    float2 inputs:st.connect = </hammer_prop_obj/material/initialShadingGroup/OpenPBR_1_1/TexCoordTransform.outputs:out>
+                    string inputs:wrapS = "periodic"
+                    string inputs:wrapT = "periodic"
+                    float outputs:g
+                }
+            }
+
+            def NodeGraph "AdobeStandardMaterial_4_0"
+            {
+                asset inputs:baseColorTexture.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:baseColorTexture>
+                asset inputs:compositedAmbientOcclusionTexture.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:compositedAmbientOcclusionTexture>
+                asset inputs:compositedNormalGLTexture.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:compositedNormalGLTexture>
+                asset inputs:metallicTexture.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:metallicTexture>
+                asset inputs:opacityTexture.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:opacityTexture>
+                float2 inputs:uvscale.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:uvscale>
+                float2 inputs:uvtranslation.connect = </hammer_prop_obj/material/initialShadingGroup.inputs:uvtranslation>
+                token outputs:surface.connect = </hammer_prop_obj/material/initialShadingGroup/AdobeStandardMaterial_4_0/AdobeStandardMaterial_4_0Shader.outputs:surface>
+
+                def Shader "AdobeStandardMaterial_4_0Shader"
+                {
+                    uniform token info:id = "AdobeStandardMaterial_4_0"
+                    float inputs:ambientOcclusion.connect = </hammer_prop_obj/material/initialShadingGroup/AdobeStandardMaterial_4_0/ambientOcclusionTextureShader.outputs:g>
+                    float3 inputs:baseColor.connect = </hammer_prop_obj/material/initialShadingGroup/AdobeStandardMaterial_4_0/baseColorTextureShader.outputs:rgb>
+                    float inputs:coatIOR = 1.6
+                    float inputs:IOR = 1.4
+                    float inputs:metallic.connect = </hammer_prop_obj/material/initialShadingGroup/AdobeStandardMaterial_4_0/metallicTextureShader.outputs:r>
+                    normal3f inputs:normal.connect = </hammer_prop_obj/material/initialShadingGroup/AdobeStandardMaterial_4_0/normalTextureShader.outputs:rgb>
+                    float inputs:opacity.connect = </hammer_prop_obj/material/initialShadingGroup/AdobeStandardMaterial_4_0/opacityTextureShader.outputs:a>
+                    token outputs:surface
+                }
+
+                def Shader "baseColorTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @hammer_prop_textures/hammer_prop_initialShadingGroup_BaseMap.png@
+                    asset inputs:file.connect = </hammer_prop_obj/material/initialShadingGroup/AdobeStandardMaterial_4_0.inputs:baseColorTexture>
+                    token inputs:sourceColorSpace = "sRGB"
+                    float2 inputs:st.connect = </hammer_prop_obj/material/initialShadingGroup/AdobeStandardMaterial_4_0/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    float3 outputs:rgb
+                }
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "UsdPrimvarReader_float2"
+                    string inputs:varname = "st"
+                    float2 outputs:result
+                }
+
+                def Shader "metallicTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @hammer_prop_textures/hammer_prop_initialShadingGroup_MaskMap.png@
+                    asset inputs:file.connect = </hammer_prop_obj/material/initialShadingGroup/AdobeStandardMaterial_4_0.inputs:metallicTexture>
+                    token inputs:sourceColorSpace = "raw"
+                    float2 inputs:st.connect = </hammer_prop_obj/material/initialShadingGroup/AdobeStandardMaterial_4_0/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    float outputs:r
+                }
+
+                def Shader "opacityTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @hammer_prop_textures/hammer_prop_initialShadingGroup_BaseMap.png@
+                    asset inputs:file.connect = </hammer_prop_obj/material/initialShadingGroup/AdobeStandardMaterial_4_0.inputs:opacityTexture>
+                    token inputs:sourceColorSpace = "raw"
+                    float2 inputs:st.connect = </hammer_prop_obj/material/initialShadingGroup/AdobeStandardMaterial_4_0/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    float outputs:a
+                }
+
+                def Shader "normalTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    float4 inputs:bias = (-1, -1, -1, 0)
+                    asset inputs:file = @hammer_prop_textures/hammer_prop_initialShadingGroup_Normal.png@
+                    asset inputs:file.connect = </hammer_prop_obj/material/initialShadingGroup/AdobeStandardMaterial_4_0.inputs:compositedNormalGLTexture>
+                    float4 inputs:scale = (2, 2, 2, 1)
+                    token inputs:sourceColorSpace = "raw"
+                    float2 inputs:st.connect = </hammer_prop_obj/material/initialShadingGroup/AdobeStandardMaterial_4_0/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    normal3f outputs:rgb
+                }
+
+                def Shader "ambientOcclusionTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @hammer_prop_textures/hammer_prop_initialShadingGroup_MaskMap.png@
+                    asset inputs:file.connect = </hammer_prop_obj/material/initialShadingGroup/AdobeStandardMaterial_4_0.inputs:compositedAmbientOcclusionTexture>
+                    token inputs:sourceColorSpace = "raw"
+                    float2 inputs:st.connect = </hammer_prop_obj/material/initialShadingGroup/AdobeStandardMaterial_4_0/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    float outputs:g
+                }
+            }
+        }
+    }
+
+    over "hammer"
+    {
+        over "hammer" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </hammer_prop_obj/material/initialShadingGroup>
+        }
+    }
+}
+

@@ -1,0 +1,17 @@
+#usda 1.0
+(
+    "Exported from Adobe Substance 3D Painter 12.1.5"
+    defaultPrim = "hammer_prop_obj"
+    metersPerUnit = 0.01
+    subLayers = [
+        @./hammer_prop.material.usda@
+    ]
+    upAxis = "Y"
+)
+
+def "hammer_prop_obj" (
+    prepend references = @./hammer_prop.geo.usd@
+)
+{
+}
+
