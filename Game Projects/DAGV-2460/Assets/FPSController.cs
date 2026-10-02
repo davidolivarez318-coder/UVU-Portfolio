@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -36,96 +34,184 @@ public class FPSController : MonoBehaviour
     [Header("Control")]
     public bool canMove = true;
 
+    // =============================================================
+    // REFERENCES
+    // =============================================================
+
     private CharacterController characterController;
+
+    // =============================================================
+    // MOVEMENT
+    // =============================================================
 
     private Vector3 moveDirection = Vector3.zero;
 
     private float rotationX = 0f;
 
-    // Timers used for forgiving jump input.
+    // =============================================================
+    // JUMP
+    // =============================================================
+
     private float coyoteTimer = 0f;
     private float jumpBufferTimer = 0f;
 
-    // Information about the ground beneath the player.
+    private bool wasGrounded = false;
+
+    // =============================================================
+    // GROUND
+    // =============================================================
+
     private bool isOnGround = false;
     private Vector3 groundNormal = Vector3.up;
 
+    // =============================================================
+    // MOVING PLATFORM
+    // =============================================================
+
+    private Transform currentPlatform;
+
+    private Vector3 lastPlatformPosition;
+    private Quaternion lastPlatformRotation;
+
+
+    // =============================================================
+    // START
+    // =============================================================
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        characterController =
+            GetComponent<CharacterController>();
 
-        // Make sure CharacterController uses the same slope limit.
-        characterController.slopeLimit = slopeLimit;
+        characterController.slopeLimit =
+            slopeLimit;
 
-        // Camera setup
+        // Camera setup.
         playerCamera.transform.SetParent(transform);
-        playerCamera.transform.localPosition = new Vector3(0, 1.6f, 0);
-        playerCamera.transform.localRotation = Quaternion.identity;
 
-        // Cursor setup
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        playerCamera.transform.localPosition =
+            new Vector3(0f, 1.6f, 0f);
+
+        playerCamera.transform.localRotation =
+            Quaternion.identity;
+
+        // Cursor setup.
+        Cursor.lockState =
+            CursorLockMode.Locked;
+
+        Cursor.visible =
+            false;
+
+        // Initial ground state.
+        isOnGround =
+            characterController.isGrounded;
+
+        wasGrounded =
+            isOnGround;
     }
 
 
+    // =============================================================
+    // UPDATE
+    // =============================================================
+
     void Update()
     {
-        // =========================================================
-        // GROUND DETECTION
-        // =========================================================
-
-        isOnGround = characterController.isGrounded;
-
-        if (isOnGround)
-        {
-            coyoteTimer = coyoteTime;
-        }
-        else
-        {
-            coyoteTimer -= Time.deltaTime;
-        }
-
-
-        // =========================================================
-        // JUMP INPUT BUFFER
-        // =========================================================
+        // ---------------------------------------------------------
+        // 1. READ JUMP INPUT
+        // ---------------------------------------------------------
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            jumpBufferTimer = jumpBufferTime;
+            jumpBufferTimer =
+                jumpBufferTime;
+        }
+        else if (jumpBufferTimer > 0f)
+        {
+            jumpBufferTimer -=
+                Time.deltaTime;
+        }
+
+
+        // ---------------------------------------------------------
+        // 2. GET CURRENT GROUND STATE
+        // ---------------------------------------------------------
+
+        isOnGround =
+            characterController.isGrounded;
+
+
+        // ---------------------------------------------------------
+        // 3. COYOTE TIME
+        // ---------------------------------------------------------
+
+        if (isOnGround)
+        {
+            coyoteTimer =
+                coyoteTime;
         }
         else
         {
-            jumpBufferTimer -= Time.deltaTime;
+            coyoteTimer -=
+                Time.deltaTime;
         }
 
 
-        // =========================================================
-        // MOVEMENT INPUT
-        // =========================================================
+        // ---------------------------------------------------------
+        // 4. FIND GROUND NORMAL
+        // ---------------------------------------------------------
 
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 right = transform.TransformDirection(Vector3.right);
+        if (isOnGround)
+        {
+            UpdateGroundNormal();
+        }
+
+
+        // ---------------------------------------------------------
+        // 5. GET PLATFORM MOVEMENT
+        // ---------------------------------------------------------
+
+        Vector3 platformMovement =
+            GetPlatformMovement();
+
+
+        // ---------------------------------------------------------
+        // 6. MOVEMENT INPUT
+        // ---------------------------------------------------------
+
+        Vector3 forward =
+            transform.TransformDirection(
+                Vector3.forward
+            );
+
+        Vector3 right =
+            transform.TransformDirection(
+                Vector3.right
+            );
 
         bool isRunning =
             canMove &&
             Input.GetKey(KeyCode.LeftShift);
 
-        float speed = isRunning ? runSpeed : walkSpeed;
+        float speed =
+            isRunning
+                ? runSpeed
+                : walkSpeed;
 
-        float verticalInput = canMove
-            ? Input.GetAxis("Vertical")
-            : 0f;
+        float verticalInput =
+            canMove
+                ? Input.GetAxis("Vertical")
+                : 0f;
 
-        float horizontalInput = canMove
-            ? Input.GetAxis("Horizontal")
-            : 0f;
-
+        float horizontalInput =
+            canMove
+                ? Input.GetAxis("Horizontal")
+                : 0f;
 
         Vector3 inputDirection =
             forward * verticalInput +
             right * horizontalInput;
+
 
         // Prevent diagonal movement from being faster.
         if (inputDirection.magnitude > 1f)
@@ -134,15 +220,14 @@ public class FPSController : MonoBehaviour
         }
 
 
-        // =========================================================
-        // SLOPE MOVEMENT
-        // =========================================================
+        // ---------------------------------------------------------
+        // 7. HORIZONTAL MOVEMENT
+        // ---------------------------------------------------------
 
         Vector3 horizontalMovement =
             inputDirection * speed;
 
-        // If we're standing on a slope, project the movement
-        // onto the slope so the player follows its surface.
+        // Follow slopes.
         if (isOnGround)
         {
             horizontalMovement =
@@ -153,111 +238,340 @@ public class FPSController : MonoBehaviour
         }
 
 
-        // =========================================================
-        // JUMP
-        // =========================================================
+        // ---------------------------------------------------------
+        // 8. JUMP
+        // ---------------------------------------------------------
 
-        if (
+        bool shouldJump =
             jumpBufferTimer > 0f &&
             coyoteTimer > 0f &&
-            canMove
-        )
-        {
-            // Apply the jump vertically.
-            moveDirection.y = jumpPower;
+            canMove;
 
-            // Consume both timers.
+        if (shouldJump)
+        {
+            // Completely replace vertical velocity.
+            moveDirection.y =
+                jumpPower;
+
+            // Consume the buffered input.
             jumpBufferTimer = 0f;
+
+            // Consume coyote time.
             coyoteTimer = 0f;
 
             // We are now airborne.
             isOnGround = false;
+
+            // Stop following the platform once airborne.
+            currentPlatform = null;
         }
 
 
-        // =========================================================
-        // GRAVITY / GROUND STICKING
-        // =========================================================
+        // ---------------------------------------------------------
+        // 9. GRAVITY
+        // ---------------------------------------------------------
 
-        if (isOnGround)
+        if (!shouldJump)
         {
-            // Keep the controller gently pressed against
-            // the ground instead of allowing tiny upward
-            // velocities to make it lose contact.
-            if (moveDirection.y < 0f)
+            if (isOnGround)
             {
-                moveDirection.y = -groundStickForce;
+                // Keep controller attached to ground.
+                moveDirection.y =
+                    -groundStickForce;
+            }
+            else
+            {
+                moveDirection.y -=
+                    gravity *
+                    Time.deltaTime;
             }
         }
-        else
+
+
+        // ---------------------------------------------------------
+        // 10. APPLY HORIZONTAL VELOCITY
+        // ---------------------------------------------------------
+
+        moveDirection.x =
+            horizontalMovement.x;
+
+        moveDirection.z =
+            horizontalMovement.z;
+
+
+        // ---------------------------------------------------------
+        // 11. COMBINE PLAYER + PLATFORM MOVEMENT
+        // ---------------------------------------------------------
+
+        Vector3 playerMovement =
+            moveDirection *
+            Time.deltaTime;
+
+        Vector3 totalMovement =
+            playerMovement +
+            platformMovement;
+
+
+        // ---------------------------------------------------------
+        // 12. MOVE CHARACTER
+        // ---------------------------------------------------------
+
+        characterController.Move(
+            totalMovement
+        );
+
+
+        // ---------------------------------------------------------
+        // 13. DETECT LANDING
+        // ---------------------------------------------------------
+
+        bool currentlyGrounded =
+            characterController.isGrounded;
+
+        // We have just landed.
+        if (
+            !wasGrounded &&
+            currentlyGrounded
+        )
         {
-            // Apply gravity while airborne.
-            moveDirection.y -= gravity * Time.deltaTime;
+            // Reset downward velocity.
+            moveDirection.y =
+                -groundStickForce;
+
+            // Immediately give us a fresh coyote window.
+            coyoteTimer =
+                coyoteTime;
         }
 
+        isOnGround =
+            currentlyGrounded;
 
-        // =========================================================
-        // COMBINE MOVEMENT
-        // =========================================================
-
-        moveDirection.x = horizontalMovement.x;
-        moveDirection.z = horizontalMovement.z;
+        wasGrounded =
+            currentlyGrounded;
 
 
-        // =========================================================
-        // APPLY CHARACTER MOVEMENT
-        // =========================================================
+        // ---------------------------------------------------------
+        // 14. CAMERA
+        // ---------------------------------------------------------
 
-        CollisionFlags collisionFlags =
-            characterController.Move(
-                moveDirection * Time.deltaTime
-            );
+        UpdateCameraLook();
+    }
 
 
-        // =========================================================
-        // CAMERA LOOK
-        // =========================================================
+    // =============================================================
+    // GROUND NORMAL
+    // =============================================================
 
-        if (canMove)
+    private void UpdateGroundNormal()
+    {
+        groundNormal =
+            Vector3.up;
+
+        Vector3 origin =
+            transform.position +
+            Vector3.up * 0.05f;
+
+        float radius =
+            characterController.radius * 0.9f;
+
+        float distance =
+            characterController.height * 0.5f +
+            0.2f;
+
+        if (
+            Physics.SphereCast(
+                origin,
+                radius,
+                Vector3.down,
+                out RaycastHit hit,
+                distance,
+                Physics.DefaultRaycastLayers,
+                QueryTriggerInteraction.Ignore
+            )
+        )
         {
-            rotationX +=
-                -Input.GetAxis("Mouse Y") * lookSpeed;
+            // Only accept upward-facing surfaces.
+            if (hit.normal.y > 0.1f)
+            {
+                groundNormal =
+                    hit.normal;
 
-            rotationX = Mathf.Clamp(
-                rotationX,
-                -lookXLimit,
-                lookXLimit
-            );
-
-            playerCamera.transform.localRotation =
-                Quaternion.Euler(
-                    rotationX,
-                    0,
-                    0
+                SetCurrentPlatform(
+                    hit.transform
                 );
-
-            transform.rotation *=
-                Quaternion.Euler(
-                    0,
-                    Input.GetAxis("Mouse X") * lookSpeed,
-                    0
-                );
+            }
         }
     }
 
 
     // =============================================================
-    // GROUND / SLOPE DETECTION
+    // PLATFORM DETECTION
+    // =============================================================
+
+    private void SetCurrentPlatform(
+        Transform platform
+    )
+    {
+        if (platform == null)
+        {
+            return;
+        }
+
+        // Already standing on this platform.
+        if (currentPlatform == platform)
+        {
+            return;
+        }
+
+        currentPlatform =
+            platform;
+
+        lastPlatformPosition =
+            currentPlatform.position;
+
+        lastPlatformRotation =
+            currentPlatform.rotation;
+    }
+
+
+    // =============================================================
+    // PLATFORM MOVEMENT
+    // =============================================================
+
+    private Vector3 GetPlatformMovement()
+    {
+        // No platform while airborne.
+        if (
+            !isOnGround ||
+            currentPlatform == null
+        )
+        {
+            return Vector3.zero;
+        }
+
+
+        // ---------------------------------------------------------
+        // TRANSLATION
+        // ---------------------------------------------------------
+
+        Vector3 positionDelta =
+            currentPlatform.position -
+            lastPlatformPosition;
+
+
+        // ---------------------------------------------------------
+        // ROTATION
+        // ---------------------------------------------------------
+
+        Quaternion rotationDelta =
+            currentPlatform.rotation *
+            Quaternion.Inverse(
+                lastPlatformRotation
+            );
+
+
+        // Player position relative to platform.
+        Vector3 localPlayerPosition =
+            currentPlatform.InverseTransformPoint(
+                transform.position
+            );
+
+
+        // Rotate player's relative position.
+        Vector3 rotatedLocalPosition =
+            rotationDelta *
+            localPlayerPosition;
+
+
+        // Convert rotated position back to world space.
+        Vector3 rotatedWorldPosition =
+            currentPlatform.TransformPoint(
+                rotatedLocalPosition
+            );
+
+
+        // Movement caused by rotation.
+        Vector3 rotationMovement =
+            rotatedWorldPosition -
+            transform.position;
+
+
+        // ---------------------------------------------------------
+        // SAVE PLATFORM STATE
+        // ---------------------------------------------------------
+
+        lastPlatformPosition =
+            currentPlatform.position;
+
+        lastPlatformRotation =
+            currentPlatform.rotation;
+
+
+        return
+            positionDelta +
+            rotationMovement;
+    }
+
+
+    // =============================================================
+    // CONTROLLER COLLISION
     // =============================================================
 
     void OnControllerColliderHit(
         ControllerColliderHit hit
     )
     {
-        // Only treat surfaces underneath the player as ground.
+        // Only surfaces beneath the player.
         if (hit.normal.y > 0.1f)
         {
-            groundNormal = hit.normal;
+            groundNormal =
+                hit.normal;
+
+            if (characterController.isGrounded)
+            {
+                SetCurrentPlatform(
+                    hit.transform
+                );
+            }
         }
+    }
+
+
+    // =============================================================
+    // CAMERA LOOK
+    // =============================================================
+
+    private void UpdateCameraLook()
+    {
+        if (!canMove)
+        {
+            return;
+        }
+
+        rotationX +=
+            -Input.GetAxis("Mouse Y") *
+            lookSpeed;
+
+        rotationX =
+            Mathf.Clamp(
+                rotationX,
+                -lookXLimit,
+                lookXLimit
+            );
+
+        playerCamera.transform.localRotation =
+            Quaternion.Euler(
+                rotationX,
+                0f,
+                0f
+            );
+
+        transform.rotation *=
+            Quaternion.Euler(
+                0f,
+                Input.GetAxis("Mouse X") *
+                lookSpeed,
+                0f
+            );
     }
 }

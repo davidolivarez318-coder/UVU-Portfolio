@@ -119,6 +119,25 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1105587 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5639150872514898223, guid: d341df6c8d9577e479c8b2a5e517e3a5, type: 3}
+  m_PrefabInstance: {fileID: 684093658}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1105594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36475fb9b848edd48b58dd3d9284a40d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoalPad
+  targetSceneName: Level_3
+  sceneLoader: {fileID: 826746313}
 --- !u!1001 &159517183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -627,7 +646,7 @@ PrefabInstance:
       objectReference: {fileID: 826746313}
     - target: {fileID: 6263689803017373715, guid: d341df6c8d9577e479c8b2a5e517e3a5, type: 3}
       propertyPath: targetSceneName
-      value: Level_1
+      value: Level_3
       objectReference: {fileID: 0}
     - target: {fileID: 9154443008082350466, guid: d341df6c8d9577e479c8b2a5e517e3a5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -669,10 +688,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6263689803017373715, guid: d341df6c8d9577e479c8b2a5e517e3a5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5639150872514898223, guid: d341df6c8d9577e479c8b2a5e517e3a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1105594}
   m_SourcePrefab: {fileID: 100100000, guid: d341df6c8d9577e479c8b2a5e517e3a5, type: 3}
 --- !u!1 &710489040
 GameObject:
