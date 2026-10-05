@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FPSController
   playerCamera: {fileID: 8803033137317329800}
-  walkSpeed: 6
-  runSpeed: 12
+  walkSpeed: 10
+  runSpeed: 15
   slopeLimit: 45
   groundStickForce: 5
   jumpPower: 15
