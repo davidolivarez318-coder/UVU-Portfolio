@@ -1,6 +1,6 @@
 //Maya ASCII 2027 scene
 //Name: block_environment.ma
-//Last modified: Tue, Nov 03, 2026 07:36:12 PM
+//Last modified: Tue, Nov 03, 2026 08:09:51 PM
 //Codeset: 1252
 file -rdi 1 -ns "block_environment_items" -rfn "block_environment_itemsRN" -op
 		 "v=0;" -typ "mayaAscii" "C:/Users/david/OneDrive/Documents/GitHub/UVU-Portfolio/Maya Projects/Maya/block_environment_items.ma";
@@ -18,12 +18,12 @@ fileInfo "product" "Maya 2027";
 fileInfo "version" "2027";
 fileInfo "cutIdentifier" "202607171511-52c21617ee";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 26200)";
-fileInfo "UUID" "F1A36A97-42CD-F71F-CD69-72BE2B437E3F";
+fileInfo "UUID" "3FA71145-48C7-5FF5-368D-EA8D63C87B3F";
 createNode transform -s -n "persp";
 	rename -uid "E4C74667-4E68-0724-20CC-6B8D00826BD7";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 7.6540597079947705 3.6297039986478441 15.77666485578523 ;
-	setAttr ".r" -type "double3" -1082.1383527299963 -683.79999999992731 0 ;
+	setAttr ".t" -type "double3" 19.261807099586118 16.960358133011187 27.678163111892403 ;
+	setAttr ".r" -type "double3" -1097.1383527297753 -681.79999999976178 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "3B7950F7-48BD-7FF8-2938-1992BC576DDF";
 	setAttr -k off ".v" no;
@@ -31,7 +31,7 @@ createNode camera -s -n "perspShape" -p "persp";
 	setAttr ".ncp" 0.0032808398950131233;
 	setAttr ".fcp" 328.08398950131232;
 	setAttr ".fd" 0.16404199475065617;
-	setAttr ".coi" 21.422153274829139;
+	setAttr ".coi" 43.021268769337688;
 	setAttr ".ow" 0.32808398950131235;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
@@ -380,7 +380,7 @@ createNode mesh -n "cellShape" -p "cell";
 		 -10.19582367 0.81693357 -9.014684677 -10.83262253 0.81677014 -9.014684677 -11.097781181 0.39198267 -9.17404175
 		 -11.022320747 -0.27831462 -9.24949646 -10.83262253 0.81638992 -10.50054836 -10.19582367 0.81655335 -10.50054836
 		 -9.93031693 0.39198375 -10.341506 -10.0052108765 -0.27831361 -10.26660347 -10.25723267 -0.44975144 -10.26656055
-		 -10.77021027 -0.44988316 -10.26656055 -11.022320747 -0.27857476 -10.26660347 -11.097781181 0.39168394 -10.341506
+		 -10.77021027 -0.44988316 -10.26656055 -11.022320747 -0.27857473 -10.26660347 -11.097781181 0.39168394 -10.341506
 		 -10.0051698685 -0.44962221 -10.014494896 -10.0051698685 -0.44949085 -9.5015192 -11.022275925 -0.44975206 -9.5015192
 		 -11.022275925 -0.44988334 -10.014494896 -9.77129173 0.81677109 -10.076015472 -9.77129173 0.81693405 -9.43921661
 		 -11.25715542 0.81655246 -9.43921661 -11.25715542 0.8163895 -10.076015472 -3.42787576 6.58795786 -11.6264286
@@ -1232,19 +1232,19 @@ createNode mesh -n "Cell_itemsShape" -p "Cell_items";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 40 ".vt[0:39]"  -1.64802706 -0.2970027 -6.44005632 -1.22608101 -0.2970027 -7.0157547
-		 -1.64802706 -0.49500453 -6.44005632 -1.22608101 -0.49500453 -7.0157547 -1.021912098 -0.2970027 -5.97581339
-		 -1.042841196 -0.49500453 -5.99503374 -0.71921748 -0.49500453 -6.64426041 -0.73875982 -0.2970027 -6.65858316
-		 -0.54817271 -0.2970027 -5.62334776 -0.61593992 -0.49500453 -5.67327499 -0.53706211 -0.49500453 -6.50447941
-		 -0.57538325 -0.2970027 -6.53128433 -1.37002265 -0.49500453 -6.23629904 -1.37002265 -0.2970027 -6.23629904
-		 -0.94807643 -0.2970027 -6.81199741 -0.94807643 -0.49500453 -6.81199741 -0.68355155 -0.2970027 -6.12769413
-		 -0.90806311 -0.2970027 -6.33095169 -1.15904951 -0.2970027 -6.52414799 -1.43705404 -0.2970027 -6.72790575
+	setAttr -s 40 ".vt[0:39]"  -1.64802706 -0.29700267 -6.44005632 -1.22608101 -0.29700267 -7.0157547
+		 -1.64802706 -0.49500453 -6.44005632 -1.22608101 -0.49500453 -7.0157547 -1.021912098 -0.29700267 -5.97581339
+		 -1.042841196 -0.49500453 -5.99503374 -0.71921748 -0.49500453 -6.64426041 -0.73875982 -0.29700267 -6.65858316
+		 -0.54817271 -0.29700267 -5.62334776 -0.61593992 -0.49500453 -5.67327499 -0.53706211 -0.49500453 -6.50447941
+		 -0.57538325 -0.29700267 -6.53128433 -1.37002265 -0.49500453 -6.23629904 -1.37002265 -0.29700267 -6.23629904
+		 -0.94807643 -0.29700267 -6.81199741 -0.94807643 -0.49500453 -6.81199741 -0.68355155 -0.29700267 -6.12769413
+		 -0.90806311 -0.29700267 -6.33095169 -1.15904951 -0.29700267 -6.52414799 -1.43705404 -0.29700267 -6.72790575
 		 -1.43705404 -0.49500453 -6.72790575 -1.15904951 -0.49500453 -6.52414799 -0.8964445 -0.49500453 -6.3260932
-		 -0.66833162 -0.49500453 -6.12720537 -0.83500278 -0.2970027 -6.50595045 -0.69244128 -0.2970027 -6.37693453
+		 -0.66833162 -0.49500453 -6.12720537 -0.83500278 -0.29700267 -6.50595045 -0.69244128 -0.29700267 -6.37693453
 		 -0.65257394 -0.49500453 -6.35268021 -0.81630969 -0.49500453 -6.49293041 -1.053562999 -0.49500453 -6.6680727
-		 -1.33156765 -0.49500453 -6.87183046 -1.33156765 -0.2970027 -6.87183046 -1.053562999 -0.2970027 -6.6680727
-		 -0.53244942 -0.2970027 -5.81590033 -0.95899737 -0.2970027 -6.14214849 -1.26453614 -0.2970027 -6.38022327
-		 -1.54254067 -0.2970027 -6.58398104 -1.54254067 -0.49500453 -6.58398104 -1.26453614 -0.49500453 -6.38022327
+		 -1.33156765 -0.49500453 -6.87183046 -1.33156765 -0.29700267 -6.87183046 -1.053562999 -0.29700267 -6.6680727
+		 -0.53244942 -0.29700267 -5.81590033 -0.95899737 -0.29700267 -6.14214849 -1.26453614 -0.29700267 -6.38022327
+		 -1.54254067 -0.29700267 -6.58398104 -1.54254067 -0.49500453 -6.58398104 -1.26453614 -0.49500453 -6.38022327
 		 -0.96304017 -0.49500453 -6.15253353 -0.5861969 -0.49500453 -5.85737801;
 	setAttr -s 76 ".ed[0:75]"  0 35 0 2 36 0 0 2 0 1 3 0 2 12 0 3 15 0 4 13 0
 		 5 9 0 6 10 0 7 14 0 4 5 1 5 38 1 6 7 1 7 24 1 8 4 0 11 7 0 8 9 0 9 39 0 10 11 0 11 25 0
@@ -1386,19 +1386,19 @@ createNode mesh -n "Cell_items1Shape" -p "Cell_items1";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 40 ".vt[0:39]"  -1.64802706 -0.2970027 -6.44005632 -1.22608101 -0.2970027 -7.0157547
-		 -1.64802706 -0.49500453 -6.44005632 -1.22608101 -0.49500453 -7.0157547 -1.021912098 -0.2970027 -5.97581339
-		 -1.042841196 -0.49500453 -5.99503374 -0.71921748 -0.49500453 -6.64426041 -0.73875982 -0.2970027 -6.65858316
-		 -0.54817271 -0.2970027 -5.62334776 -0.61593992 -0.49500453 -5.67327499 -0.53706211 -0.49500453 -6.50447941
-		 -0.57538325 -0.2970027 -6.53128433 -1.37002265 -0.49500453 -6.23629904 -1.37002265 -0.2970027 -6.23629904
-		 -0.94807643 -0.2970027 -6.81199741 -0.94807643 -0.49500453 -6.81199741 -0.68355155 -0.2970027 -6.12769413
-		 -0.90806311 -0.2970027 -6.33095169 -1.15904951 -0.2970027 -6.52414799 -1.43705404 -0.2970027 -6.72790575
+	setAttr -s 40 ".vt[0:39]"  -1.64802706 -0.29700267 -6.44005632 -1.22608101 -0.29700267 -7.0157547
+		 -1.64802706 -0.49500453 -6.44005632 -1.22608101 -0.49500453 -7.0157547 -1.021912098 -0.29700267 -5.97581339
+		 -1.042841196 -0.49500453 -5.99503374 -0.71921748 -0.49500453 -6.64426041 -0.73875982 -0.29700267 -6.65858316
+		 -0.54817271 -0.29700267 -5.62334776 -0.61593992 -0.49500453 -5.67327499 -0.53706211 -0.49500453 -6.50447941
+		 -0.57538325 -0.29700267 -6.53128433 -1.37002265 -0.49500453 -6.23629904 -1.37002265 -0.29700267 -6.23629904
+		 -0.94807643 -0.29700267 -6.81199741 -0.94807643 -0.49500453 -6.81199741 -0.68355155 -0.29700267 -6.12769413
+		 -0.90806311 -0.29700267 -6.33095169 -1.15904951 -0.29700267 -6.52414799 -1.43705404 -0.29700267 -6.72790575
 		 -1.43705404 -0.49500453 -6.72790575 -1.15904951 -0.49500453 -6.52414799 -0.8964445 -0.49500453 -6.3260932
-		 -0.66833162 -0.49500453 -6.12720537 -0.83500278 -0.2970027 -6.50595045 -0.69244128 -0.2970027 -6.37693453
+		 -0.66833162 -0.49500453 -6.12720537 -0.83500278 -0.29700267 -6.50595045 -0.69244128 -0.29700267 -6.37693453
 		 -0.65257394 -0.49500453 -6.35268021 -0.81630969 -0.49500453 -6.49293041 -1.053562999 -0.49500453 -6.6680727
-		 -1.33156765 -0.49500453 -6.87183046 -1.33156765 -0.2970027 -6.87183046 -1.053562999 -0.2970027 -6.6680727
-		 -0.53244942 -0.2970027 -5.81590033 -0.95899737 -0.2970027 -6.14214849 -1.26453614 -0.2970027 -6.38022327
-		 -1.54254067 -0.2970027 -6.58398104 -1.54254067 -0.49500453 -6.58398104 -1.26453614 -0.49500453 -6.38022327
+		 -1.33156765 -0.49500453 -6.87183046 -1.33156765 -0.29700267 -6.87183046 -1.053562999 -0.29700267 -6.6680727
+		 -0.53244942 -0.29700267 -5.81590033 -0.95899737 -0.29700267 -6.14214849 -1.26453614 -0.29700267 -6.38022327
+		 -1.54254067 -0.29700267 -6.58398104 -1.54254067 -0.49500453 -6.58398104 -1.26453614 -0.49500453 -6.38022327
 		 -0.96304017 -0.49500453 -6.15253353 -0.5861969 -0.49500453 -5.85737801;
 	setAttr -s 76 ".ed[0:75]"  0 35 0 2 36 0 0 2 0 1 3 0 2 12 0 3 15 0 4 13 0
 		 5 9 0 6 10 0 7 14 0 4 5 1 5 38 1 6 7 1 7 24 1 8 4 0 11 7 0 8 9 0 9 39 0 10 11 0 11 25 0
@@ -1540,19 +1540,19 @@ createNode mesh -n "Cell_items2Shape" -p "Cell_items2";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 40 ".vt[0:39]"  -1.64802706 -0.2970027 -6.44005632 -1.22608101 -0.2970027 -7.0157547
-		 -1.64802706 -0.49500453 -6.44005632 -1.22608101 -0.49500453 -7.0157547 -1.021912098 -0.2970027 -5.97581339
-		 -1.042841196 -0.49500453 -5.99503374 -0.71921748 -0.49500453 -6.64426041 -0.73875982 -0.2970027 -6.65858316
-		 -0.54817271 -0.2970027 -5.62334776 -0.61593992 -0.49500453 -5.67327499 -0.53706211 -0.49500453 -6.50447941
-		 -0.57538325 -0.2970027 -6.53128433 -1.37002265 -0.49500453 -6.23629904 -1.37002265 -0.2970027 -6.23629904
-		 -0.94807643 -0.2970027 -6.81199741 -0.94807643 -0.49500453 -6.81199741 -0.68355155 -0.2970027 -6.12769413
-		 -0.90806311 -0.2970027 -6.33095169 -1.15904951 -0.2970027 -6.52414799 -1.43705404 -0.2970027 -6.72790575
+	setAttr -s 40 ".vt[0:39]"  -1.64802706 -0.29700267 -6.44005632 -1.22608101 -0.29700267 -7.0157547
+		 -1.64802706 -0.49500453 -6.44005632 -1.22608101 -0.49500453 -7.0157547 -1.021912098 -0.29700267 -5.97581339
+		 -1.042841196 -0.49500453 -5.99503374 -0.71921748 -0.49500453 -6.64426041 -0.73875982 -0.29700267 -6.65858316
+		 -0.54817271 -0.29700267 -5.62334776 -0.61593992 -0.49500453 -5.67327499 -0.53706211 -0.49500453 -6.50447941
+		 -0.57538325 -0.29700267 -6.53128433 -1.37002265 -0.49500453 -6.23629904 -1.37002265 -0.29700267 -6.23629904
+		 -0.94807643 -0.29700267 -6.81199741 -0.94807643 -0.49500453 -6.81199741 -0.68355155 -0.29700267 -6.12769413
+		 -0.90806311 -0.29700267 -6.33095169 -1.15904951 -0.29700267 -6.52414799 -1.43705404 -0.29700267 -6.72790575
 		 -1.43705404 -0.49500453 -6.72790575 -1.15904951 -0.49500453 -6.52414799 -0.8964445 -0.49500453 -6.3260932
-		 -0.66833162 -0.49500453 -6.12720537 -0.83500278 -0.2970027 -6.50595045 -0.69244128 -0.2970027 -6.37693453
+		 -0.66833162 -0.49500453 -6.12720537 -0.83500278 -0.29700267 -6.50595045 -0.69244128 -0.29700267 -6.37693453
 		 -0.65257394 -0.49500453 -6.35268021 -0.81630969 -0.49500453 -6.49293041 -1.053562999 -0.49500453 -6.6680727
-		 -1.33156765 -0.49500453 -6.87183046 -1.33156765 -0.2970027 -6.87183046 -1.053562999 -0.2970027 -6.6680727
-		 -0.53244942 -0.2970027 -5.81590033 -0.95899737 -0.2970027 -6.14214849 -1.26453614 -0.2970027 -6.38022327
-		 -1.54254067 -0.2970027 -6.58398104 -1.54254067 -0.49500453 -6.58398104 -1.26453614 -0.49500453 -6.38022327
+		 -1.33156765 -0.49500453 -6.87183046 -1.33156765 -0.29700267 -6.87183046 -1.053562999 -0.29700267 -6.6680727
+		 -0.53244942 -0.29700267 -5.81590033 -0.95899737 -0.29700267 -6.14214849 -1.26453614 -0.29700267 -6.38022327
+		 -1.54254067 -0.29700267 -6.58398104 -1.54254067 -0.49500453 -6.58398104 -1.26453614 -0.49500453 -6.38022327
 		 -0.96304017 -0.49500453 -6.15253353 -0.5861969 -0.49500453 -5.85737801;
 	setAttr -s 76 ".ed[0:75]"  0 35 0 2 36 0 0 2 0 1 3 0 2 12 0 3 15 0 4 13 0
 		 5 9 0 6 10 0 7 14 0 4 5 1 5 38 1 6 7 1 7 24 1 8 4 0 11 7 0 8 9 0 9 39 0 10 11 0 11 25 0
@@ -1694,19 +1694,19 @@ createNode mesh -n "Cell_items3Shape" -p "Cell_items3";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 40 ".vt[0:39]"  -1.64802706 -0.2970027 -6.44005632 -1.22608101 -0.2970027 -7.0157547
-		 -1.64802706 -0.49500453 -6.44005632 -1.22608101 -0.49500453 -7.0157547 -1.021912098 -0.2970027 -5.97581339
-		 -1.042841196 -0.49500453 -5.99503374 -0.71921748 -0.49500453 -6.64426041 -0.73875982 -0.2970027 -6.65858316
-		 -0.54817271 -0.2970027 -5.62334776 -0.61593992 -0.49500453 -5.67327499 -0.53706211 -0.49500453 -6.50447941
-		 -0.57538325 -0.2970027 -6.53128433 -1.37002265 -0.49500453 -6.23629904 -1.37002265 -0.2970027 -6.23629904
-		 -0.94807643 -0.2970027 -6.81199741 -0.94807643 -0.49500453 -6.81199741 -0.68355155 -0.2970027 -6.12769413
-		 -0.90806311 -0.2970027 -6.33095169 -1.15904951 -0.2970027 -6.52414799 -1.43705404 -0.2970027 -6.72790575
+	setAttr -s 40 ".vt[0:39]"  -1.64802706 -0.29700267 -6.44005632 -1.22608101 -0.29700267 -7.0157547
+		 -1.64802706 -0.49500453 -6.44005632 -1.22608101 -0.49500453 -7.0157547 -1.021912098 -0.29700267 -5.97581339
+		 -1.042841196 -0.49500453 -5.99503374 -0.71921748 -0.49500453 -6.64426041 -0.73875982 -0.29700267 -6.65858316
+		 -0.54817271 -0.29700267 -5.62334776 -0.61593992 -0.49500453 -5.67327499 -0.53706211 -0.49500453 -6.50447941
+		 -0.57538325 -0.29700267 -6.53128433 -1.37002265 -0.49500453 -6.23629904 -1.37002265 -0.29700267 -6.23629904
+		 -0.94807643 -0.29700267 -6.81199741 -0.94807643 -0.49500453 -6.81199741 -0.68355155 -0.29700267 -6.12769413
+		 -0.90806311 -0.29700267 -6.33095169 -1.15904951 -0.29700267 -6.52414799 -1.43705404 -0.29700267 -6.72790575
 		 -1.43705404 -0.49500453 -6.72790575 -1.15904951 -0.49500453 -6.52414799 -0.8964445 -0.49500453 -6.3260932
-		 -0.66833162 -0.49500453 -6.12720537 -0.83500278 -0.2970027 -6.50595045 -0.69244128 -0.2970027 -6.37693453
+		 -0.66833162 -0.49500453 -6.12720537 -0.83500278 -0.29700267 -6.50595045 -0.69244128 -0.29700267 -6.37693453
 		 -0.65257394 -0.49500453 -6.35268021 -0.81630969 -0.49500453 -6.49293041 -1.053562999 -0.49500453 -6.6680727
-		 -1.33156765 -0.49500453 -6.87183046 -1.33156765 -0.2970027 -6.87183046 -1.053562999 -0.2970027 -6.6680727
-		 -0.53244942 -0.2970027 -5.81590033 -0.95899737 -0.2970027 -6.14214849 -1.26453614 -0.2970027 -6.38022327
-		 -1.54254067 -0.2970027 -6.58398104 -1.54254067 -0.49500453 -6.58398104 -1.26453614 -0.49500453 -6.38022327
+		 -1.33156765 -0.49500453 -6.87183046 -1.33156765 -0.29700267 -6.87183046 -1.053562999 -0.29700267 -6.6680727
+		 -0.53244942 -0.29700267 -5.81590033 -0.95899737 -0.29700267 -6.14214849 -1.26453614 -0.29700267 -6.38022327
+		 -1.54254067 -0.29700267 -6.58398104 -1.54254067 -0.49500453 -6.58398104 -1.26453614 -0.49500453 -6.38022327
 		 -0.96304017 -0.49500453 -6.15253353 -0.5861969 -0.49500453 -5.85737801;
 	setAttr -s 76 ".ed[0:75]"  0 35 0 2 36 0 0 2 0 1 3 0 2 12 0 3 15 0 4 13 0
 		 5 9 0 6 10 0 7 14 0 4 5 1 5 38 1 6 7 1 7 24 1 8 4 0 11 7 0 8 9 0 9 39 0 10 11 0 11 25 0
@@ -1841,7 +1841,7 @@ createNode UsdDefaultSettings -n "UsdDefaultRenderSettings";
 	setAttr ".asp" -type "string" "UsdDefaultRenderSettings,/Render/SceneRenderSettings";
 lockNode -l 1 ;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "B6F64B6B-444B-CF31-8FC6-17BA2DF0C3B8";
+	rename -uid "80C22FBD-41AA-22FA-4317-1A8E37E0591B";
 	setAttr -s 7 ".lnk";
 	setAttr -s 7 ".slnk";
 createNode UsdDefaultSettings -n "UsdDefaultRenderSettings1";
@@ -1851,16 +1851,16 @@ createNode UsdDefaultSettings -n "UsdDefaultRenderSettings1";
 	setAttr ".asp" -type "string" "UsdDefaultRenderSettings,/Render/SceneRenderSettings";
 lockNode -l 1 ;
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "08FBAF89-4D48-2947-E885-4385796811A8";
+	rename -uid "8FE805F2-4A18-CF31-9AA6-E1B0E9520D4B";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "AD311184-47A4-C95D-74F0-7A90B70914C7";
+	rename -uid "6202B2A4-47B8-63F8-2C81-8FB5AB60DC61";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "91DF50B5-47AC-515F-D909-16893D25116D";
+	rename -uid "1AE34599-421B-21C6-5B42-698CC6AA891C";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "7D8CDDEA-492D-FD30-A7DD-578E4475D0D7";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "B07E4EA5-451A-E8AC-15D6-0DB49BB7307C";
+	rename -uid "6BA9D746-446B-A8B0-7AD9-CCA90DADAE83";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "675595FE-4443-D108-9E02-86BD2F45252F";
 	setAttr ".g" yes;
@@ -1928,7 +1928,8 @@ createNode aiAOVFilter -s -n "defaultArnoldFilter";
 	setAttr ".ai_translator" -type "string" "gaussian";
 createNode aiAOVDriver -s -n "defaultArnoldDriver";
 	rename -uid "F1E822EE-416E-38E1-CCDC-2ABB2C22CCBE";
-	setAttr ".ai_translator" -type "string" "exr";
+	setAttr ".ai_translator" -type "string" "png";
+	setAttr ".color_management" 1;
 createNode aiAOVDriver -s -n "defaultArnoldDisplayDriver";
 	rename -uid "D0D3305D-43A1-369D-55D9-878A0A57DD48";
 	setAttr ".ai_translator" -type "string" "maya";
@@ -1986,17 +1987,18 @@ createNode bump2d -n "bump2d1";
 	setAttr ".vc2" -type "float3" 9.9999997e-06 9.9999997e-06 0 ;
 createNode reference -n "block_environment_itemsRN";
 	rename -uid "8513FC1F-4D8E-3736-790A-20B284B901B7";
-	setAttr -s 6 ".phl";
+	setAttr -s 7 ".phl";
 	setAttr ".phl[1]" 0;
 	setAttr ".phl[2]" 0;
 	setAttr ".phl[3]" 0;
 	setAttr ".phl[4]" 0;
 	setAttr ".phl[5]" 0;
 	setAttr ".phl[6]" 0;
+	setAttr ".phl[7]" 0;
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"block_environment_itemsRN"
 		"block_environment_itemsRN" 0
-		"block_environment_itemsRN" 24
+		"block_environment_itemsRN" 25
 		2 "|block_environment_items:crate" "translate" " -type \"double3\" -9.66524015569301298 0.39209171230085832 -0.32171105357178265"
 		
 		2 "|block_environment_items:crate" "rotate" " -type \"double3\" 0 86.74382675422870648 0"
@@ -2046,9 +2048,12 @@ createNode reference -n "block_environment_itemsRN";
 		5 3 "block_environment_itemsRN" "block_environment_items:aiStandardSurface1.message" 
 		"block_environment_itemsRN.placeHolderList[4]" "block_environment_items:materialInfo1.m"
 		
+		5 3 "block_environment_itemsRN" "block_environment_items:aiStandardSurface1.message" 
+		"block_environment_itemsRN.placeHolderList[5]" "block_environment_items:materialInfo1.m"
+		
 		5 0 "block_environment_itemsRN" "block_environment_items:aiMultiply1.message" 
-		"block_environment_items:materialInfo1.texture" "block_environment_itemsRN.placeHolderList[5]" 
-		"block_environment_itemsRN.placeHolderList[6]" "";
+		"block_environment_items:materialInfo1.texture" "block_environment_itemsRN.placeHolderList[6]" 
+		"block_environment_itemsRN.placeHolderList[7]" "";
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
 createNode standardSurface -n "standardSurface2";
@@ -2069,6 +2074,7 @@ createNode shadingEngine -n "block_environment_items:aiStandardSurface1SG";
 	setAttr ".ro" yes;
 createNode materialInfo -n "materialInfo3";
 	rename -uid "53A8FE41-40F2-2908-1BD8-43A5398A33AF";
+	setAttr -s 2 ".t";
 createNode standardSurface -n "items";
 	rename -uid "8AA34229-4D36-C17E-2B9A-8B9CAE6573F5";
 createNode shadingEngine -n "standardSurface3SG";
@@ -2111,50 +2117,50 @@ createNode place2dTexture -n "place2dTexture6";
 createNode aiNormalMap -n "aiNormalMap1";
 	rename -uid "7DB326E8-422E-6ECF-52B5-87AC423949C0";
 createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
-	rename -uid "905522D1-43C3-15D0-B228-32B15D65B00F";
+	rename -uid "1E1303F7-4A49-D3E9-8A06-688AF83E361D";
 	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
-	setAttr ".tgi[0].vl" -type "double2" -784.72117626702266 -325.80221751614192 ;
-	setAttr ".tgi[0].vh" -type "double2" 476.61617057584459 509.25718613140577 ;
+	setAttr ".tgi[0].vl" -type "double2" -1426.7741306939974 -571.95118791110474 ;
+	setAttr ".tgi[0].vh" -type "double2" 488.07367681466923 723.7828875851751 ;
 	setAttr -s 13 ".tgi[0].ni";
-	setAttr ".tgi[0].ni[0].x" -114.03575134277344;
-	setAttr ".tgi[0].ni[0].y" 217.66947937011719;
+	setAttr ".tgi[0].ni[0].x" 176.13449096679688;
+	setAttr ".tgi[0].ni[0].y" 401.46304321289062;
 	setAttr ".tgi[0].ni[0].nvs" 1923;
-	setAttr ".tgi[0].ni[1].x" -1251.115966796875;
-	setAttr ".tgi[0].ni[1].y" 447.22705078125;
+	setAttr ".tgi[0].ni[1].x" -114.03575134277344;
+	setAttr ".tgi[0].ni[1].y" 217.66947937011719;
 	setAttr ".tgi[0].ni[1].nvs" 1923;
-	setAttr ".tgi[0].ni[2].x" -335.46432495117188;
-	setAttr ".tgi[0].ni[2].y" 217.66947937011719;
+	setAttr ".tgi[0].ni[2].x" -1251.115966796875;
+	setAttr ".tgi[0].ni[2].y" 447.22705078125;
 	setAttr ".tgi[0].ni[2].nvs" 1923;
-	setAttr ".tgi[0].ni[3].x" -1029.6873779296875;
-	setAttr ".tgi[0].ni[3].y" 447.22705078125;
+	setAttr ".tgi[0].ni[3].x" -1252.70654296875;
+	setAttr ".tgi[0].ni[3].y" 294.53045654296875;
 	setAttr ".tgi[0].ni[3].nvs" 1923;
-	setAttr ".tgi[0].ni[4].x" 176.13449096679688;
-	setAttr ".tgi[0].ni[4].y" 401.46304321289062;
+	setAttr ".tgi[0].ni[4].x" -1162.7568359375;
+	setAttr ".tgi[0].ni[4].y" -93.553939819335938;
 	setAttr ".tgi[0].ni[4].nvs" 1923;
-	setAttr ".tgi[0].ni[5].x" -1249.29931640625;
-	setAttr ".tgi[0].ni[5].y" 65.216026306152344;
+	setAttr ".tgi[0].ni[5].x" -1029.6873779296875;
+	setAttr ".tgi[0].ni[5].y" 447.22705078125;
 	setAttr ".tgi[0].ni[5].nvs" 1923;
-	setAttr ".tgi[0].ni[6].x" -1027.8707275390625;
-	setAttr ".tgi[0].ni[6].y" 65.216026306152344;
+	setAttr ".tgi[0].ni[6].x" -1384.1854248046875;
+	setAttr ".tgi[0].ni[6].y" -93.553939819335938;
 	setAttr ".tgi[0].ni[6].nvs" 1923;
-	setAttr ".tgi[0].ni[7].x" -888.25494384765625;
-	setAttr ".tgi[0].ni[7].y" -117.61142730712891;
+	setAttr ".tgi[0].ni[7].x" -1249.29931640625;
+	setAttr ".tgi[0].ni[7].y" 65.216026306152344;
 	setAttr ".tgi[0].ni[7].nvs" 1923;
-	setAttr ".tgi[0].ni[8].x" -1384.1854248046875;
-	setAttr ".tgi[0].ni[8].y" -93.553939819335938;
+	setAttr ".tgi[0].ni[8].x" -888.25494384765625;
+	setAttr ".tgi[0].ni[8].y" -117.61142730712891;
 	setAttr ".tgi[0].ni[8].nvs" 1923;
 	setAttr ".tgi[0].ni[9].x" -1031.2779541015625;
 	setAttr ".tgi[0].ni[9].y" 294.53045654296875;
 	setAttr ".tgi[0].ni[9].nvs" 1923;
-	setAttr ".tgi[0].ni[10].x" -1252.70654296875;
-	setAttr ".tgi[0].ni[10].y" 294.53045654296875;
-	setAttr ".tgi[0].ni[10].nvs" 1923;
-	setAttr ".tgi[0].ni[11].x" -1162.7568359375;
-	setAttr ".tgi[0].ni[11].y" -93.553939819335938;
+	setAttr ".tgi[0].ni[10].x" -595.0928955078125;
+	setAttr ".tgi[0].ni[10].y" 417.14285278320312;
+	setAttr ".tgi[0].ni[10].nvs" 2387;
+	setAttr ".tgi[0].ni[11].x" -1027.8707275390625;
+	setAttr ".tgi[0].ni[11].y" 65.216026306152344;
 	setAttr ".tgi[0].ni[11].nvs" 1923;
-	setAttr ".tgi[0].ni[12].x" -595.0928955078125;
-	setAttr ".tgi[0].ni[12].y" 417.14285278320312;
-	setAttr ".tgi[0].ni[12].nvs" 2387;
+	setAttr ".tgi[0].ni[12].x" -335.46432495117188;
+	setAttr ".tgi[0].ni[12].y" 217.66947937011719;
+	setAttr ".tgi[0].ni[12].nvs" 1923;
 select -ne :time1;
 	setAttr ".o" 1;
 	setAttr ".unw" 1;
@@ -2195,6 +2201,8 @@ select -ne :initialParticleSE;
 select -ne :defaultRenderGlobals;
 	addAttr -ci true -h true -sn "dss" -ln "defaultSurfaceShader" -dt "string";
 	setAttr ".ren" -type "string" "arnold";
+	setAttr ".outf" 51;
+	setAttr ".imfkey" -type "string" "png";
 	setAttr ".dss" -type "string" "openPBR_shader1";
 select -ne :defaultResolution;
 	setAttr ".pa" 1;
@@ -2212,14 +2220,13 @@ select -ne :defaultColorMgtGlobals;
 select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
-select -ne :ikSystem;
-	setAttr -s 4 ".sol";
 connectAttr "block_environment_itemsRN.phl[1]" "standardSurface3SG.dsm" -na;
 connectAttr "block_environment_itemsRN.phl[2]" "block_environment_items:aiStandardSurface1SG.ss"
 		;
 connectAttr "block_environment_itemsRN.phl[3]" "materialInfo3.m";
 connectAttr "block_environment_itemsRN.phl[4]" "materialInfo3.t" -na;
-connectAttr "block_environment_itemsRN.phl[5]" "block_environment_itemsRN.phl[6]"
+connectAttr "block_environment_itemsRN.phl[5]" "materialInfo3.t" -na;
+connectAttr "block_environment_itemsRN.phl[6]" "block_environment_itemsRN.phl[7]"
 		;
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
@@ -2397,11 +2404,11 @@ connectAttr "block_environment_items_openPBR_shader1_BaseColor_1.oc" "items.bc";
 connectAttr "block_environment_items_openPBR_shader1_Metallic_1.oa" "items.m";
 connectAttr "block_environment_items_openPBR_shader1_Roughness_1.oa" "items.sr";
 connectAttr "aiNormalMap1.out" "items.n";
-connectAttr "items.oc" "standardSurface3SG.ss";
 connectAttr "Cell_itemsShape.iog" "standardSurface3SG.dsm" -na;
 connectAttr "Cell_items1Shape.iog" "standardSurface3SG.dsm" -na;
 connectAttr "Cell_items2Shape.iog" "standardSurface3SG.dsm" -na;
 connectAttr "Cell_items3Shape.iog" "standardSurface3SG.dsm" -na;
+connectAttr "items.oc" "standardSurface3SG.ss";
 connectAttr "block_environment_items_openPBR_shader1_Height_1.oa" "standardSurface3SG.ds"
 		;
 connectAttr "standardSurface3SG.msg" "materialInfo4.sg";
@@ -2630,31 +2637,31 @@ connectAttr "place2dTexture6.ofs" "block_environment_items_openPBR_shader1_BaseC
 		;
 connectAttr "block_environment_items_openPBR_shader1_Normal_1.oc" "aiNormalMap1.input"
 		;
-connectAttr "block_environment_items_openPBR_shader1_Height_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
+connectAttr "standardSurface3SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
 		;
-connectAttr "place2dTexture6.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
+connectAttr "block_environment_items_openPBR_shader1_Height_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
 		;
-connectAttr "place2dTexture5.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
+connectAttr "place2dTexture6.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
 		;
-connectAttr "block_environment_items_openPBR_shader1_BaseColor_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
+connectAttr "place2dTexture4.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
 		;
-connectAttr "standardSurface3SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
+connectAttr "block_environment_items_openPBR_shader1_Normal_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
 		;
-connectAttr "place2dTexture2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[5].dn"
+connectAttr "block_environment_items_openPBR_shader1_BaseColor_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[5].dn"
 		;
-connectAttr "block_environment_items_openPBR_shader1_Roughness_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[6].dn"
+connectAttr "place2dTexture3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[6].dn"
 		;
-connectAttr "aiNormalMap1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[7].dn"
+connectAttr "place2dTexture2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[7].dn"
 		;
-connectAttr "place2dTexture3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[8].dn"
+connectAttr "aiNormalMap1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[8].dn"
 		;
 connectAttr "block_environment_items_openPBR_shader1_Metallic_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[9].dn"
 		;
-connectAttr "place2dTexture4.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[10].dn"
+connectAttr "items.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[10].dn"
 		;
-connectAttr "block_environment_items_openPBR_shader1_Normal_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[11].dn"
+connectAttr "block_environment_items_openPBR_shader1_Roughness_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[11].dn"
 		;
-connectAttr "items.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[12].dn"
+connectAttr "place2dTexture5.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[12].dn"
 		;
 connectAttr "set1.pa" ":renderPartition.st" -na;
 connectAttr "standardSurface2SG.pa" ":renderPartition.st" -na;
