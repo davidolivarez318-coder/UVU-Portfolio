@@ -132,6 +132,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5453775094295106518, guid: d341df6c8d9577e479c8b2a5e517e3a5, type: 3}
+      propertyPath: LightsModule.light
+      value: 
+      objectReference: {fileID: 1209899640}
     - target: {fileID: 5639150872514898223, guid: d341df6c8d9577e479c8b2a5e517e3a5, type: 3}
       propertyPath: m_Name
       value: Goal
@@ -1759,7 +1763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6650026629845367907, guid: 18ad6b4e1caaa7c43b40f260fd4ea13e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 162.55
+      value: 162.53
       objectReference: {fileID: 0}
     - target: {fileID: 6650026629845367907, guid: 18ad6b4e1caaa7c43b40f260fd4ea13e, type: 3}
       propertyPath: m_LocalRotation.w
